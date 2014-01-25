@@ -1,0 +1,22 @@
+{
+  "name": "tengine",
+  "repo": "zhang-ning/tengine",
+  "description": "dom template enginee",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "visionmedia/configurable.js": "*"
+  },
+  "development": {
+    "component/domify": "*"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js",
+    "template.js"
+  ],
+  "styles": [
+    "tengine.css"
+  ]
+}
