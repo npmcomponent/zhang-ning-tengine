@@ -11,11 +11,10 @@
 
 ## API
 
+
   var tengine = require('tengine');
-
-  tengine({msg:'hello world'})
-  .compile('<p>{{msg}}</p>');
-
+    tengine({msg:'hello world'})
+      .compile('<p>{{msg}}</p>');
 
   <p>hello world</p>
 
