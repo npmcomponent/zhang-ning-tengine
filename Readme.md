@@ -10,13 +10,14 @@
 
 ## API
 
-  var tengine = require('tengine');
+    var tengine = require('tengine');
   
-  tengine({msg:'hello world'})
-    .compile('<p>{{msg}}</p>');
+      tengine({msg:'hello world'})
+        .compile('<p>{{msg}}</p>');
 
-  
-  <p>hello world</p>
+  The result will be in dom:  
+
+    <p>hello world</p>
 
 
 
