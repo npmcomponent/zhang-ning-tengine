@@ -13,10 +13,6 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": [
-    "index.js",
-    "template.js"
-  ],
-  "styles": [
-    "tengine.css"
+    "index.js"
   ]
 }
