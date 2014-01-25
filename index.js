@@ -3,22 +3,21 @@
  */
 
 
-var domfy        = require('domfy')
-  , Configurable = require('configurable');
+var domify       = require('domify')
+  , Configurable = require('configurable.js');
 
-Configuable(Tenginee.prototype);
+Configurable(Tengine.prototype);
 
-function Tenginee (doc,data){
-  if(typeof data !== 'object' && null !== data) throw new RangeError('object expected.');
-
-  this._eom  = 'string' === typeof doc ? domfy(doc) : doc;
+function Tengine (data){
+  if(typeof data !== 'object' && null !== data) throw new TypeError('object expected.');
   this._data = data;
 }
 
-Tenginee.prototype.compile = function(){
-  var reg = this.get('symble') || /.*{{\s*|\s*}}.*/g; 
-  checkText.bind(this);
-  compile(this._eom);
+Tengine.prototype.compile = function(doc){
+  this.reg = this.get('symble') || /.*{{\s*|\s*}}.*/g; 
+  doc = typeof doc === 'string' ? domify(doc) : doc;
+  compile.call(this,doc);
+  return doc;
 };
 
 
@@ -30,8 +29,7 @@ Tenginee.prototype.compile = function(){
  * @api private
  */
 function compile(doc) {
-  checkText(doc);
-  checkChildren(doc);
+  checkChildren.call(this,doc);
 }
 
 function checkText(doc) {
@@ -44,9 +42,14 @@ function checkText(doc) {
 }
 
 function checkChildren(doc) {
-  if (!doc.childNodes) return; 
-  for (var i = 0, len = childNodes.length; i < len; i++) {
-    compile(childNodes[i]);
+  if (!doc.childNodes.length) {
+    checkText.call(this,doc);
+    return;
+  } 
+  for (var i = 0, len = doc.childNodes.length; i < len; i++) {
+    compile.call(this,doc.childNodes[i]);
   }
 }
+
+exports = module.exports = Tengine
 
