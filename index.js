@@ -32,10 +32,13 @@ Tengine.prototype.compile = function(doc){
  * @api private
  */
 function compile(doc) {
-  checkChildren.call(this,doc);
+  text.call(this,doc);
+  attr.call(this,doc);
+  child.call(this,doc);
 }
 
-function checkText(doc) {
+function text(doc) {
+  if(!this.reg.test(doc.nodeValue)) return;
   var key = doc.nodeValue
                 .replace(/\r|\n/g,'') // remove link-breaking symble
                 .replace(this.reg, ''); // get key
@@ -44,13 +47,19 @@ function checkText(doc) {
   doc.nodeValue = doc.nodeValue.replace(/\r|\n/g,'').replace(/{{.*}}/, this._data[key]);
 }
 
-function checkChildren(doc) {
+function child(doc) {
   if (!doc.childNodes.length) {
-    checkText.call(this,doc);
     return;
   } 
   for (var i = 0, len = doc.childNodes.length; i < len; i++) {
     compile.call(this,doc.childNodes[i]);
+  }
+}
+
+function attr(doc){
+  if(!doc.attributes) return;
+  for (var i = 0, len = doc.attributes.length; i < len; i++) {
+    text.call(this,doc.attributes[i]);
   }
 }
 
