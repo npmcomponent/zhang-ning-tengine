@@ -1,4 +1,4 @@
-var tengine = require('tengine')
+var Tengine = require('tengine')
   , assert  = require('assert');
 
 describe('simple data',function(){
@@ -9,7 +9,7 @@ describe('simple data',function(){
   });
 
   it('should set simple data',function(){
-    var t = new tengine({msg:'hello world'});
-    assert(t.compile('<p>{{msg}}</p>').textContent == 'hello world');
+    assert(Tengine({msg:'hello world'})
+           .compile('<p>{{msg}}</p>').textContent == 'hello world');
   });
 });

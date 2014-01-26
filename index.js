@@ -6,9 +6,12 @@
 var domify       = require('domify')
   , Configurable = require('configurable.js');
 
+exports = module.exports = Tengine
+
 Configurable(Tengine.prototype);
 
 function Tengine (data){
+  if(!(this instanceof Tengine)) return new Tengine(data);
   if(typeof data !== 'object' && null !== data) throw new TypeError('object expected.');
   this._data = data;
 }
@@ -51,5 +54,4 @@ function checkChildren(doc) {
   }
 }
 
-exports = module.exports = Tengine
 
