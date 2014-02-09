@@ -59,8 +59,11 @@ function child(doc) {
 function attr(doc){
   if(!doc.attributes) return;
   for (var i = 0, len = doc.attributes.length; i < len; i++) {
-    if(doc.attributes[i].nodeName === 'repeat'){
+    var isChildwithRepeat = doc.parentNode && doc.attributes[i].nodeName === 'repeat';
+    if(isChildwithRepeat){
       this.repeats = doc;
+      this.repeatsParent = doc.parentNode;
+      doc.parentNode.removeChild(doc);
     }
     text.call(this,doc.attributes[i]);
   }
