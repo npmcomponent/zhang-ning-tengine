@@ -44,7 +44,8 @@ function text(doc) {
                 .replace(this.reg, ''); // get key
 
   //replace nodeValue with the data
-  doc.nodeValue = doc.nodeValue.replace(/\r|\n/g,'').replace(/{{.*}}/, this._data[key]);
+  if(this._data[key])
+    doc.nodeValue = doc.nodeValue.replace(/\r|\n/g,'').replace(/{{.*}}/, this._data[key]);
 }
 
 function child(doc) {
@@ -64,9 +65,8 @@ function attr(doc){
       this.repeats = doc;
       this.repeatsParent = doc.parentNode;
       doc.parentNode.removeChild(doc);
-    }else{
-      text.call(this,doc.attributes[i]);
     }
+    text.call(this,doc.attributes[i]);
   }
 }
 
