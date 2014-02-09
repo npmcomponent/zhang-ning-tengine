@@ -32,8 +32,8 @@ Tengine.prototype.compile = function(doc){
  * @api private
  */
 function compile(doc) {
-  text.call(this,doc);
   attr.call(this,doc);
+  text.call(this,doc);
   child.call(this,doc);
 }
 
@@ -52,20 +52,21 @@ function child(doc) {
     return;
   } 
   for (var i = 0, len = doc.childNodes.length; i < len; i++) {
-    compile.call(this,doc.childNodes[i]);
+    if(doc.childNodes[i]) compile.call(this,doc.childNodes[i]);
   }
 }
 
 function attr(doc){
   if(!doc.attributes) return;
   for (var i = 0, len = doc.attributes.length; i < len; i++) {
-    var isChildwithRepeat = doc.parentNode && doc.attributes[i].nodeName === 'repeat';
-    if(isChildwithRepeat){
+    var hasRepeat = doc.parentNode && doc.attributes[i].nodeName === 'repeat';
+    if(hasRepeat){
       this.repeats = doc;
       this.repeatsParent = doc.parentNode;
       doc.parentNode.removeChild(doc);
+    }else{
+      text.call(this,doc.attributes[i]);
     }
-    text.call(this,doc.attributes[i]);
   }
 }
 
