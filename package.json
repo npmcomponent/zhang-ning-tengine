@@ -15,6 +15,9 @@
     "engine",
     "simple"
   ],
+  "dependence": {
+    "mocha" : "*"
+  },
   "author": "Jonathan zhang <hunter.dding@gmail.com>",
   "license": "MIT",
   "readmeFilename": "Readme.md",
