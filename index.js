@@ -3,8 +3,8 @@
  */
 
 
-var domify       = require('domify')
-  , Configurable = require('configurable.js');
+var domify       = require('component-domify')
+  , Configurable = require('visionmedia-configurable.js');
 
 exports = module.exports = Tengine
 

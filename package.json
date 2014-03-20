@@ -1,25 +1,12 @@
 {
-  "name": "tengine",
+  "name": "zhang-ning-tengine",
+  "description": "dom template enginee",
   "version": "0.0.1",
-  "description": "a simple dom template enginee",
+  "keywords": [],
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {
+    "component-domify": "git://github.com/npmcomponent/component-domify.git",
+    "visionmedia-configurable.js": "git://github.com/npmcomponent/visionmedia-configurable.js.git"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/zhang-ning/tengine.git"
-  },
-  "keywords": [
-    "template",
-    "engine",
-    "simple"
-  ],
-  "dependence": {
-    "mocha" : "*"
-  },
-  "author": "Jonathan zhang <hunter.dding@gmail.com>",
-  "license": "MIT",
-  "readmeFilename": "Readme.md",
-  "gitHead": "499e4dffd0bfd696d3e478f26badd658af3aa07c"
+  "license": "MIT"
 }
